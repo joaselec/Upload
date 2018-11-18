@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+ 
+ 
+	
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>
+               	 ▶ %-5level %d{HH:mm:ss.SSS} [%thread] %logger[%method:%line] - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>C:\Users\정태숙\Documents\testFile.log</file>
+        <encoder>
+            <pattern>
+				▶ %-5level %d{HH:mm:ss.SSS} [%thread] %logger[%method:%line] - %msg%n                
+            </pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="AnswerLogfile" class="ch.qos.logback.core.FileAppender">
+        <file>C:\dev\answer.log</file>
+        <encoder>
+            <pattern>
+				▶ %-5level %d{HH:mm:ss} %logger[%method:%line] - %msg%n                
+            </pattern>
+        </encoder>
+    </appender>
+   
+        
+    
+    <logger name="com.my.rest.common" level="info">
+        <appender-ref ref="console"/>
+    </logger>
+    
+    <logger name="com.my.rest.controller.QuizController" level="info">
+        <appender-ref ref="AnswerLogfile"/>
+    </logger>
+    
+        <!-- log SQL with timing information, post execution -->
+    <logger name="jdbc.sqltiming" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="console" />
+    </logger>
+ 
+    <logger name="jdbc.audit" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="console" />
+    </logger>
+    
+    <logger name="jdbc.resultset" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="console" />
+    </logger>
+    
+    <logger name="test" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="console" />
+    </logger>
+    
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    
+  
+        
+</configuration>

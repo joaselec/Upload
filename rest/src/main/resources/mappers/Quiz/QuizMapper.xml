@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quiz">
+
+   
+	
+	<select id="countQuiz" resultType="int">
+		SELECT COUNT(*) 
+	    FROM tbl_quiz
+	</select>  
+	<select id="getQuiz" resultType="com.my.rest.model.QuizVO">
+        SELECT * FROM tbl_quiz 
+        WHERE quizId = #{quizNum}
+    </select> 
+    <select id="getAnswer" resultType="int">
+        SELECT answer FROM tbl_quiz 
+        WHERE quizId = #{quizNum}
+    </select> 
+    <select id="getGuideLine" resultType="map">
+        select * from tbl_guideline
+		order by rand() limit 1
+    </select> 
+    
+    <select id="getRightCase" resultType="String">
+	    select content from tbl_case
+		where domainId = #{domainId}
+		order by rand() limit 1
+	</select> 
+	
+	<select id="getWrongCase" resultType="map">
+	    select content from tbl_case
+		where domainId NOT IN (#{domainId})
+		order by rand() limit 3
+	</select> 
+	
+</mapper>
