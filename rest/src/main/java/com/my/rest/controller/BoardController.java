@@ -26,8 +26,7 @@ import com.my.rest.service.BoardService;
 //@RequestMapping("/board/*")
 public class BoardController {
     
-    // 의존관계 주입 => BoardServiceImpl 생성
-    // IoC 의존관계 역전
+
     @Inject
     BoardService boardService;
     
